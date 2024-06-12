@@ -1,0 +1,19 @@
+# Arquivos e diretórios específicos do Node.js e npm
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Arquivos e diretórios específicos do TypeScript (se aplicável)
+dist/
+tsconfig.tsbuildinfo
+
+# Arquivos e diretórios específicos do npm
+package-lock.json
+yarn.lock
+
+# Outros arquivos e diretórios gerados localmente (pode variar dependendo do seu projeto)
+.env
+.vscode/
+.idea/
+*.log
+*.tmp

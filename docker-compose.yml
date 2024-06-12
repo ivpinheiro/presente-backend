@@ -1,0 +1,95 @@
+# Docker Compose Configuration
+# visit https://docs.docker.com/compose/
+
+version: "3.9"
+services:
+  nginx-presente-app:
+    container_name: nginx-presente-app
+    build:
+      context: ./nginx/prod
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/prod/config/nginx:/etc/nginx
+      - ./nginx/prod/share/index.html:/usr/share/nginx/html/index.html
+    restart: on-failure:5
+    networks:
+      presente-app-network:
+        ipv4_address: 255.255.0.2
+
+  mongodb-presente-app:
+    image: mongo:7.0
+    container_name: mongodb-presente-app
+    restart: always
+    volumes:
+      - ./nosqldb:/data/db
+    env_file: .env
+    environment:
+      - MONGO_INITDB_DATABASE=${DATABASE_NAME}
+      - MONGO_INITDB_ROOT_USERNAME=${DATABASE_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${DATABASE_PASS}
+    networks:
+      presente-app-network:
+        ipv4_address: 255.255.0.3
+
+  postgres-presente-app:
+    image: postgres:16.2-alpine
+    container_name: postgres-presente-app
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./sqldb/postgres:/var/lib/postgresql/data
+    restart: always
+    networks:
+      presente-app-network:
+        ipv4_address: 255.255.0.4
+
+  nestjs-presente-app:
+    container_name: nestjs-presente-app
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        DEPLOY_CONFIG: ${DEPLOY_CONFIG}
+    env_file: .env
+    restart: always
+    depends_on:
+      mongodb-presente-app:
+        condition: service_started
+      postgres-presente-app:
+        condition: service_started
+    networks:
+      presente-app-network:
+        ipv4_address: 255.255.0.5
+
+  mongo-express-presente:
+    image: mongo-express
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGODB_ADMINUSERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGODB_ADMINPASSWORD}
+      - ME_CONFIG_MONGODB_URL=${DATABASE_URI}
+      - ME_CONFIG_BASICAUTH=${BASICAUTH}
+      - ME_CONFIG_BASICAUTH_USERNAME=${BASICAUTH_USERNAME}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${BASICAUTH_PASSWORD}
+      - ME_CONFIG_MONGODB_PORT=${MONGODB_PORT}
+    ports:
+      - 8085:8081
+    depends_on:
+      nginx-presente-app:
+        condition: service_started
+      mongodb-presente-app:
+        condition: service_started
+      postgres-presente-app:
+        condition: service_started
+    networks:
+      presente-app-network:
+        ipv4_address: 255.255.0.6
+
+networks:
+  presente-app-network:
+    ipam:
+      config:
+        - subnet: 255.255.0.0/28

@@ -1,0 +1,12 @@
+//Base Docker url: http://localhost/api
+//Base local url: http://localhost:5000
+@base_url = http://localhost/api
+
+###
+POST {{base_url}}/login
+Content-Type: application/json
+
+{
+    "email": "ivan@ivan.tech",
+    "password": "123!@#123ABCabc"
+}

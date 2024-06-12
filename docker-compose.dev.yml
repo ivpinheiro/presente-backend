@@ -1,0 +1,83 @@
+version: "3.8"
+services:
+  nginx-presente-dev:
+    container_name: nginx-presente-dev
+    build:
+      context: ./nginx/dev
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/dev/config/nginx:/etc/nginx
+      - ./nginx/dev/share/index.html:/usr/share/nginx/html/index.html
+    restart: on-failure:5
+    networks:
+      presente-app-network:
+        ipv4_address: 210.168.0.2
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  mongodb-presente-dev:
+    image: mongo:7.0
+    container_name: mongodb-presente-dev
+    restart: always
+    volumes:
+      - ./nosqldb:/data/db
+    env_file: .env
+    environment:
+      - MONGO_INITDB_DATABASE=${DATABASE_NAME}
+      - MONGO_INITDB_ROOT_USERNAME=${DATABASE_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${DATABASE_PASS}
+    ports:
+      - 27017:27017
+    networks:
+      presente-app-network:
+        ipv4_address: 210.168.0.3
+
+  postgres-presente-dev:
+    image: postgres:16.2-alpine
+    container_name: postgres-presente-dev
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - ./sqldb/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    restart: always
+    networks:
+      presente-app-network:
+        ipv4_address: 210.168.0.4
+
+  mongo-express-presente-dev:
+    image: mongo-express
+    container_name: mongo-express-presente-dev
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGODB_ADMINUSERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGODB_ADMINPASSWORD}
+      - ME_CONFIG_MONGODB_URL=${DATABASE_URI}
+      - ME_CONFIG_BASICAUTH=${BASICAUTH}
+      - ME_CONFIG_BASICAUTH_USERNAME=${BASICAUTH_USERNAME}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${BASICAUTH_PASSWORD}
+      - ME_CONFIG_MONGODB_PORT=${MONGODB_PORT}
+    ports:
+      - 8085:8081
+    depends_on:
+      nginx-presente-dev:
+        condition: service_started
+      mongodb-presente-dev:
+        condition: service_started
+      postgres-presente-dev:
+        condition: service_started
+    networks:
+      presente-app-network:
+        ipv4_address: 210.168.0.5
+
+networks:
+  presente-app-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 210.168.0.0/28
