@@ -1,7 +1,7 @@
 import { Document } from 'mongoose';
 import * as mongoose from 'mongoose';
 
-export interface Blogcontent extends Document {
+export interface Activity extends Document {
   readonly _id: mongoose.Schema.Types.ObjectId;
   readonly title: string;
   readonly author: string;

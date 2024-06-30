@@ -3,7 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
-import { BlogcontentsModule } from './blogcontents/blogcontents.module';
+import { ActivitiesModule } from './activities/activities.module';
 import { PrismaModule } from './prisma/prisma.module';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
@@ -23,7 +23,7 @@ const DATABASE_URI =
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(DATABASE_URI),
-    BlogcontentsModule,
+    ActivitiesModule,
     PrismaModule,
     UserModule,
     AuthModule,

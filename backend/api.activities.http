@@ -1,0 +1,56 @@
+
+//Base Docker url: http://localhost/api
+//Base local url: http://localhost:5000
+@base_url = http://localhost/api
+
+###
+GET {{base_url}}/activities
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
+
+###
+GET {{base_url}}/activities/6681b125e8a97839a6783f50
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
+
+###
+POST  {{base_url}}/activities
+Content-Type: application/json 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
+
+{
+    "title": "Conteudo de teste para home",
+    "author": "Ivan",
+    "authorEmail": "ivan@ivan.com.br",
+    "activitiesWeek": [{"dayWeek": "1", "timeOfDay": ["19:30"]}],
+    "startDate": "2024-05-10",
+    "endDate": "2024-05-10",
+    "createdAt": "2024-05-10",
+    "updatedAt": "2024-05-05",
+    "category": "USP"
+}
+
+###
+PATCH   {{base_url}}/activities/6644b6c2670e9b3428979259
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
+
+{
+    "title": "Conteudo Quill",
+    "author": "Ivan",
+    "authorEmail": "ivan@ivan.com.br",
+    "urlTitle": "atualizar",
+    "content": "[\n {\n \"insert\": \"Este é um texto totalmente formatado pelo Quill Editor\"\n },\n {\n \"attributes\": {\n \"header\": 1\n },\n \"insert\": \"\\n\"\n },\n {\n \"insert\": \"\\n\"\n },\n {\n \"attributes\": {\n \"size\": \"large\"\n },\n \"insert\": \"Estamos criando um blog totalmente do zero! \"\n },\n {\n \"insert\": \"\\n\"\n }\n]",
+    "contentSummary": "Este é o resumo",
+    "publicationDate": "2024-05-05",
+    "updatedAt": "2024-05-05",
+    "createdAt": "2024-05-10",
+    "category": "Teste",
+    "keywords": ["Ivan"],
+    "coverImage": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original-wordmark.svg",
+    "tags": ["Ivan"],
+    "language": "ptbr"
+}
+
+###
+DELETE    {{base_url}}/activities/668197f0de4c49686d372277
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc

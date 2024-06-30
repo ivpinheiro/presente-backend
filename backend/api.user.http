@@ -15,7 +15,7 @@ Content-Type: application/json
 ### Retorna e-mail e nome do JWT
 GET {{base_url}}/user/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIFAiLCJpYXQiOjE3MTk3MjM3OTksImV4cCI6MTcyMjMxNTc5OX0.5otTTlLfgyPyAHOwLVPTwjNcMJR16I_HnIqAXal8Pdg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
 
 ### Atualiza o nome
 POST {{base_url}}/user/update-name
@@ -38,4 +38,4 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsI
 ### Retorna e-mail e nome do banco de dados
 GET {{base_url}}/user/get
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIFAiLCJpYXQiOjE3MTk3MjM3OTksImV4cCI6MTcyMjMxNTc5OX0.5otTTlLfgyPyAHOwLVPTwjNcMJR16I_HnIqAXal8Pdg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
