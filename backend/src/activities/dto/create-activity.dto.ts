@@ -11,6 +11,16 @@ import {
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
+class ActivityTime {
+  @IsNotEmpty()
+  @IsString()
+  readonly start: string;
+
+  @IsNotEmpty()
+  @IsString()
+  readonly end: string;
+}
+
 class Activity {
   @IsNotEmpty()
   @IsString()
@@ -19,7 +29,9 @@ class Activity {
   @IsNotEmpty()
   @IsArray()
   @ArrayMinSize(1)
-  readonly timeOfDay: [string];
+  @ValidateNested({ each: true })
+  @Type(() => ActivityTime)
+  readonly activityTime: ActivityTime[];
 }
 
 export class CreateActivityDto {

@@ -8,7 +8,7 @@ GET {{base_url}}/activities
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
 
 ###
-GET {{base_url}}/activities/6681b125e8a97839a6783f50
+GET {{base_url}}/activities/6681b6c9763b10ccd0fa72d1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
 
 ###
@@ -17,10 +17,28 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
 
 {
-    "title": "Conteudo de teste para home",
+    "title": "POO",
     "author": "Ivan",
-    "authorEmail": "ivan@ivan.com.br",
-    "activitiesWeek": [{"dayWeek": "1", "timeOfDay": ["19:30"]}],
+    "authorEmail": "i@i.com",
+        "activitiesWeek": [{
+    	"dayWeek": "1",
+    	"activityTime": [{
+    		"start": "10:30",
+    		"end": "12:30"
+    	}, {
+    		"start": "19:30",
+    		"end": "20:30"
+    	}]
+    }, {
+    	"dayWeek": "2",
+    	"activityTime": [{
+    		"start": "09:00",
+    		"end": "10:30"
+    	}, {
+    		"start": "13:30",
+    		"end": "17:30"
+    	}]
+    }],
     "startDate": "2024-05-10",
     "endDate": "2024-05-10",
     "createdAt": "2024-05-10",
@@ -29,28 +47,41 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsI
 }
 
 ###
-PATCH   {{base_url}}/activities/6644b6c2670e9b3428979259
+PATCH   {{base_url}}/activities/6681b6c9763b10ccd0fa72d1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
 
 {
-    "title": "Conteudo Quill",
+    "title": "POO",
     "author": "Ivan",
-    "authorEmail": "ivan@ivan.com.br",
-    "urlTitle": "atualizar",
-    "content": "[\n {\n \"insert\": \"Este é um texto totalmente formatado pelo Quill Editor\"\n },\n {\n \"attributes\": {\n \"header\": 1\n },\n \"insert\": \"\\n\"\n },\n {\n \"insert\": \"\\n\"\n },\n {\n \"attributes\": {\n \"size\": \"large\"\n },\n \"insert\": \"Estamos criando um blog totalmente do zero! \"\n },\n {\n \"insert\": \"\\n\"\n }\n]",
-    "contentSummary": "Este é o resumo",
-    "publicationDate": "2024-05-05",
-    "updatedAt": "2024-05-05",
+    "authorEmail": "i@i.com",
+        "activitiesWeek": [{
+    	"dayWeek": "1",
+    	"activityTime": [{
+    		"start": "10:30",
+    		"end": "12:30"
+    	}, {
+    		"start": "15:30",
+    		"end": "20:30"
+    	}]
+    }, {
+    	"dayWeek": "2",
+    	"activityTime": [{
+    		"start": "09:00",
+    		"end": "10:30"
+    	}, {
+    		"start": "13:30",
+    		"end": "17:30"
+    	}]
+    }],
+    "startDate": "2024-05-10",
+    "endDate": "2024-05-10",
     "createdAt": "2024-05-10",
-    "category": "Teste",
-    "keywords": ["Ivan"],
-    "coverImage": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nuxtjs/nuxtjs-original-wordmark.svg",
-    "tags": ["Ivan"],
-    "language": "ptbr"
+    "updatedAt": "2024-05-05",
+    "category": "USP"
 }
 
 ###
-DELETE    {{base_url}}/activities/668197f0de4c49686d372277
+DELETE    {{base_url}}/activities/6681b125e8a97839a6783f50
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
