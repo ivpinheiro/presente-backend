@@ -12,7 +12,30 @@ Content-Type: application/json
     "name": "Ivan Pinheiro"
 }
 
-### Retorna e-mail e nome
+### Retorna e-mail e nome do JWT
 GET {{base_url}}/user/me
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEzLCJlbWFpbCI6Iml2YW5AaXZhbi50ZWNoIiwibmFtZSI6Ikl2YW4gUGluaGVpcm8iLCJpYXQiOjE3MTUxODg4MzksImV4cCI6MTcxNzc4MDgzOX0.5d2qXzlEHcxtKmXVDLNScHo_hKaMlwUzWeSe8D6tMgc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIFAiLCJpYXQiOjE3MTk3MjM3OTksImV4cCI6MTcyMjMxNTc5OX0.5otTTlLfgyPyAHOwLVPTwjNcMJR16I_HnIqAXal8Pdg
+
+### Atualiza o nome
+POST {{base_url}}/user/update-name
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIFBpbmhlaXJvIiwiaWF0IjoxNzE5NzE0NTg2LCJleHAiOjE3MjIzMDY1ODZ9.nFyfgD9Pa5GBA-QCGAW96AkvYtIE887-420jpq7626U
+
+{
+    "name": "Ivan B P"
+}
+
+### Atualiza a senha
+POST {{base_url}}/user/update-password
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIFBpbmhlaXJvIiwiaWF0IjoxNzE5NzE0NTg2LCJleHAiOjE3MjIzMDY1ODZ9.nFyfgD9Pa5GBA-QCGAW96AkvYtIE887-420jpq7626U
+
+{
+    "password": "1!Aa!123"
+}
+
+### Retorna e-mail e nome do banco de dados
+GET {{base_url}}/user/get
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIFAiLCJpYXQiOjE3MTk3MjM3OTksImV4cCI6MTcyMjMxNTc5OX0.5otTTlLfgyPyAHOwLVPTwjNcMJR16I_HnIqAXal8Pdg
