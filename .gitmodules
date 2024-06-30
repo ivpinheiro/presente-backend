@@ -1,0 +1,3 @@
+[submodule "presente-app"]
+	path = presente-app
+	url = https://github.com/ivpinheiro/presente-app
