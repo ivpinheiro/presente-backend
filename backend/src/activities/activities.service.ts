@@ -3,6 +3,7 @@ import { CreateActivityDto } from './dto/create-activity.dto';
 import { UpdateAcitivityDto } from './dto/update-activity.dto';
 import { ActivityRepository } from './repository/activities.repository';
 import { Activity } from './interfaces/activities.interface';
+import { User } from '../user/entities/user.entity';
 
 @Injectable()
 export class ActivitiesService {
@@ -11,17 +12,17 @@ export class ActivitiesService {
     return await this.activityRepository.createActivity(createActivitieDto);
   }
 
-  async findAll(): Promise<Activity[]> {
-    const allActivities = await this.activityRepository.findAllActivities();
+  async findAll(user: User): Promise<Activity[]> {
+    const allActivities = await this.activityRepository.findAllActivities(user);
     if (!allActivities.length) {
       throw new BadRequestException('There is no activity content available');
     }
     return allActivities;
   }
 
-  async findOne(id: string): Promise<Activity> {
+  async findOne(id: string, user: User): Promise<Activity> {
     try {
-      const activity = await this.activityRepository.findOneActivity(id);
+      const activity = await this.activityRepository.findOneActivity(id, user);
       if (!activity) throw new BadRequestException('There are no results');
       return activity;
     } catch (error) {
@@ -32,9 +33,10 @@ export class ActivitiesService {
   async update(
     id: string,
     updateAcitivityDto: UpdateAcitivityDto,
+    user: User,
   ): Promise<Activity> {
     try {
-      const activity = await this.activityRepository.findOneActivity(id);
+      const activity = await this.activityRepository.findOneActivity(id, user);
       if (!activity) throw new BadRequestException('There are no results');
       const activityUpdated = await this.activityRepository.updateActivityById(
         id,
@@ -46,11 +48,21 @@ export class ActivitiesService {
     }
   }
 
-  async removeById(id: string): Promise<Activity> {
+  async removeById(id: string, user: User): Promise<Activity> {
     try {
-      return await this.activityRepository.deleteActivityById(id);
+      const activity = await this.activityRepository.deleteActivityById(
+        id,
+        user,
+      );
+      if (!activity)
+        throw new BadRequestException('This activity does not exists');
+      return activity;
     } catch (error) {
-      throw new BadRequestException('This activity does not exists');
+      if (error instanceof BadRequestException) {
+        throw new BadRequestException(error.message);
+      } else {
+        throw new Error('Communication error');
+      }
     }
   }
 }

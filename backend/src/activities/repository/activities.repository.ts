@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Activity } from '../interfaces/activities.interface';
 import { CreateActivityDto } from '../dto/create-activity.dto';
 import { UpdateAcitivityDto } from '../dto/update-activity.dto';
+import { User } from '../../user/entities/user.entity';
 
 @Injectable()
 export class ActivityRepository {
@@ -17,20 +18,26 @@ export class ActivityRepository {
     return activityCreated;
   }
 
-  async findAllActivities(): Promise<Activity[]> {
+  async findAllActivities(user: User): Promise<Activity[]> {
     return await this.activityModel
-      .find({}, { __v: false })
+      .find({ authorEmail: user.email }, { __v: false })
       .sort({ title: +1 })
       .exec();
   }
 
-  async findOneActivity(idContent: string): Promise<Activity> {
-    return await this.activityModel.findOne({ _id: idContent }, { __v: false });
+  async findOneActivity(idContent: string, user: User): Promise<Activity> {
+    return await this.activityModel.findOne(
+      { _id: idContent, authorEmail: user.email },
+      { __v: false },
+    );
   }
 
-  async deleteActivityById(idContent: string): Promise<Activity> {
+  async deleteActivityById(idContent: string, user: User): Promise<Activity> {
+    if (!user || !user.email) {
+      throw new Error('User information is incomplete');
+    }
     return await this.activityModel.findOneAndDelete(
-      { _id: idContent },
+      { _id: idContent, authorEmail: user.email },
       { __v: false },
     );
   }

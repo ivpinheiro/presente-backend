@@ -5,21 +5,21 @@
 
 ###
 GET {{base_url}}/activities
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoidkB2LmNvbSIsIm5hbWUiOiJJdmFuIFBpbmhlaXJvIiwiaWF0IjoxNzE5Nzc4MTM2LCJleHAiOjE3MjIzNzAxMzZ9.3NC2FxF8bfR6oXpRQjex2QaaPasNWha9qvUEuUmaYeo
 
 ###
 GET {{base_url}}/activities/6681b6c9763b10ccd0fa72d1
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoidkB2LmNvbSIsIm5hbWUiOiJJdmFuIFBpbmhlaXJvIiwiaWF0IjoxNzE5Nzc4MTM2LCJleHAiOjE3MjIzNzAxMzZ9.3NC2FxF8bfR6oXpRQjex2QaaPasNWha9qvUEuUmaYeo
 
 ###
 POST  {{base_url}}/activities
 Content-Type: application/json 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoidkB2LmNvbSIsIm5hbWUiOiJJdmFuIFBpbmhlaXJvIiwiaWF0IjoxNzE5Nzc4MTM2LCJleHAiOjE3MjIzNzAxMzZ9.3NC2FxF8bfR6oXpRQjex2QaaPasNWha9qvUEuUmaYeo
 
 {
     "title": "POO",
-    "author": "Ivan",
-    "authorEmail": "i@i.com",
+    "author": "Vilmar",
+    "authorEmail": "v@v.com",
         "activitiesWeek": [{
     	"dayWeek": "1",
     	"activityTime": [{
@@ -55,7 +55,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsI
     "title": "POO",
     "author": "Ivan",
     "authorEmail": "i@i.com",
-        "activitiesWeek": [{
+    "activitiesWeek": [{
     	"dayWeek": "1",
     	"activityTime": [{
     		"start": "10:30",
@@ -82,6 +82,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsI
 }
 
 ###
-DELETE    {{base_url}}/activities/6681b125e8a97839a6783f50
+DELETE    {{base_url}}/activities/6681bb801be7c3ff6432b30c
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImVtYWlsIjoiaUBpLmNvbSIsIm5hbWUiOiJJdmFuIEJhcmIiLCJpYXQiOjE3MTk3Njg5MzYsImV4cCI6MTcyMjM2MDkzNn0.USF3ZhuMMdcG5n3yjwSZ8p0Ee_YaHacTT5Et6H_LIcc
