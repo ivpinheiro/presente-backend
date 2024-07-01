@@ -17,31 +17,34 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoidkB2LmNvbSIsIm5hbWUiOiJJdmFuIFBpbmhlaXJvIiwiaWF0IjoxNzE5Nzc4MTM2LCJleHAiOjE3MjIzNzAxMzZ9.3NC2FxF8bfR6oXpRQjex2QaaPasNWha9qvUEuUmaYeo
 
 {
-    "title": "POO",
+    "title": "Cálculo",
     "author": "Vilmar",
     "authorEmail": "v@v.com",
     "activitiesWeek": [{
     	"dayWeek": "1",
     	"activityTime": [{
     		"start": "10:30",
-    		"end": "12:30"
+    		"end": "12:30",			
+			"presenceActivity":[{"dateTime":"2024-05-10T20:30", "isPresent": true}]
     	}, {
     		"start": "19:30",
-    		"end": "20:30"
+    		"end": "20:30",
+			"presenceActivity":[{"dateTime":"2024-05-10T20:30", "isPresent": false}]
     	}]
     }, {
     	"dayWeek": "2",
     	"activityTime": [{
     		"start": "09:00",
-    		"end": "10:30"
+    		"end": "10:30",
+			"presenceActivity":[{"dateTime":"2024-05-10T20:30", "isPresent": false}]
     	}, {
     		"start": "13:30",
-    		"end": "17:30"
+    		"end": "17:30",
+			"presenceActivity":[{"dateTime":"2024-05-10T20:30", "isPresent": true}]
     	}]
     }],
     "startDate": "2024-05-10",
     "endDate": "2024-05-10",
-	"presenceActivity":[{"dateTime":"2024-05-10T20:30", "isPresent": true}],
     "createdAt": "2024-05-10",
     "updatedAt": "2024-05-05",
     "category": "USP"
@@ -84,6 +87,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsI
 }
 
 ###
-DELETE    {{base_url}}/activities/6682d4fa29149090cadfc6be
+DELETE    {{base_url}}/activities/6683081d991ef9286fe4ffe5
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoidkB2LmNvbSIsIm5hbWUiOiJJdmFuIFBpbmhlaXJvIiwiaWF0IjoxNzE5Nzc4MTM2LCJleHAiOjE3MjIzNzAxMzZ9.3NC2FxF8bfR6oXpRQjex2QaaPasNWha9qvUEuUmaYeo
