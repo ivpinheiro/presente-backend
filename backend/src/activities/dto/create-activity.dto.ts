@@ -8,6 +8,7 @@ import {
   ArrayMinSize,
   IsEmail,
   ValidateNested,
+  IsBoolean,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 
@@ -32,6 +33,15 @@ class Activity {
   @ValidateNested({ each: true })
   @Type(() => ActivityTime)
   readonly activityTime: ActivityTime[];
+}
+
+class PresenceActivity {
+  @IsString()
+  @IsDateString()
+  readonly dateTime: string;
+
+  @IsBoolean()
+  readonly isPresent: string;
 }
 
 export class CreateActivityDto {
@@ -65,6 +75,11 @@ export class CreateActivityDto {
   @IsNotEmpty()
   @IsDateString()
   readonly endDate: string;
+
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => PresenceActivity)
+  readonly presenceActivity: PresenceActivity[];
 
   @IsNotEmpty()
   @IsDateString()

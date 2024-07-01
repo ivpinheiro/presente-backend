@@ -6,6 +6,7 @@ export const Activity = new Schema({
   activitiesWeek: [{}],
   startDate: Date,
   endDate: Date,
+  presenceActivity: [{}],
   createdAt: { type: Date, default: Date.now },
   updatedAt: Date,
   category: String,
